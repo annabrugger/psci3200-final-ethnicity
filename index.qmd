@@ -14,6 +14,7 @@ format:
 editor: visual
 ---
 
+```{=html}
 <style>
 
 body{
@@ -21,14 +22,24 @@ body{
 text-align: justify}
 
 </style>
+```
+### Introduction
 
-Note: can add stuff to the navigation bar in the .yml
+Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc). and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* \[see, for example, @afrobarometer2020\]. This question reflects an assumption which seems to be common ... - that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian students, I argue that this assumption is false and that some people identify with both their national and their ethnic identities.
 
-and put data in the data folder
+### Overview of the Literature
 
-### Background and Hypothesis
+Studies that have been conducted in migrant communities consistently find that ethnic identification and national identification are compatible.
 
-Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a \[Kenyan/Ghanaian/etc\]. and being a \[respondent's ethnic group\]. Which of these two groups do you feel most strongly attached to?* \[see, for example, @afrobarometer2020\]. The framing of this question assumes that ethnic identification is incompatible with national identification. But is that necessarily true? Could it not be that some people are dual identifiers -- identifying with both their ethnicity and their nationality?
+-   @ryder2000 find that ethnic identification and national identification are independent and have distinctive correlations with external variables among immigrants in the US.
+
+-   A study of adolescent immigrants from 13 countries confirms Ryder's findings. The relationship between ethnic and national identification varies widely both across countries and across individuals -- reaching from negative to no relationship to positive [@berry2006].
+
+There seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries. ... Interesting ...
+
+-   @davis1999 reports two different forms of Basque identification. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from its perception of being Basque. It seems like dual identification might be possible among individuals who hold an apolitical form of ethnic identification.
+
+### Hypothesis
 
 I hypothesize that ethnic and national identification are compatible. Hence, when measuring the two independently, there should be no negative relationship between them.
 
@@ -36,19 +47,9 @@ I hypothesize that ethnic and national identification are compatible. Hence, whe
 
 The above survey question reflects a unidimensional conception of identity. An increase in ethnic identification is directly associated with the same decrease in national identity (Figure 1). A bidimensional conception of identity, in contrast, reflects that ethnic and national identification can be independent of each other (Figure 2).
 
-![](images/Screenshot 2024-04-07 133304.png)
+![](images/Screenshot%202024-04-07%20133304.png)
 
-If ethnic and national identification are incompatible, all observations will cluster on the dashed diagonal in Figure 2. However, if the hypothesis is correct, we will see significant spread around the diagonal and might also find observations in the first and third quadrants.
-
-The following studies provide support for my hypothesis:
-
--   @davis1999 reports two different forms of Basque identification. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from its perception of being Basque. It seems like dual identification might be possible among individuals who hold an apolitical form of ethnic identification.
-
--   @ryder2000 find that ethnic identification and national identification are independent and have distinctive correlations with external variables among immigrants in the US.
-
--   A study of adolescent immigrants from 13 countries confirms Ryder's findings. The relationship between ethnic and national identification varies widely both across countries and across individuals -- reaching from negative to no relationship to positive [@berry2006]. Graphically, this means that there are observations in all four quadrants.  
-
-Additionally, I will explore if there are any characteristics particular to those individuals who identify both with their ethnicity and nationality. Do they tend to have more social connections, for example? Do they predominantly live in urban areas? This might spark some ideas about how to foster dual-identification in fractured societies.
+If ethnic and national identification are incompatible, all observations will cluster on the dashed diagonal in Figure 2. However, if the hypothesis is correct, we will see significant spread around the diagonal and might also find observations in the first and third quadrants
 
 ### Research Design
 
@@ -57,6 +58,8 @@ I use the follwing linear regression model to estimate the relationship between 
 $$ Y_i =\beta X_i + \epsilon_i $$
 
 X is the averaged z-score of two measures of ethnic identification (see the Appendix for question wording), Y the averaged z-score of two measures of national identification, and $\epsilon$ the error term.
+
+Additionally, I will explore if there are any characteristics particular to those individuals who identify both with their ethnicity and nationality. Do they tend to have more social connections, for example? Do they predominantly live in urban areas? This might spark some ideas about how to foster dual-identification in fractured societies.
 
 ### Data
 
@@ -253,6 +256,10 @@ plot(dat_z$ethnic_index, dat_z$national_index,
      col = 'grey',
      abline(model))
 ```
+
+### Conclusion
+
+This also implies that the framing of survey questions such as that mentioned in the introduction fail to adequately measure ethnic identification and national identitification. They cannot account for people who identify with both their ethnicity and their nationality. Hence, ...
 
 ### References
 
