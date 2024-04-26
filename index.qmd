@@ -167,14 +167,31 @@ dat <- dplyr::rename(dat,
 
 ## question wording
 
+## q5_baseline: Thinking about where you grew up, would you say your upbringing was mostly Urban or Rural?
+
 ## q9_baseline: Thinking about your family heritage, what is the ethnic community, cultural group, or tribe that your family belongs to? If your family comes from multiple groups, you may select more than one.
+
+## q20_baseline: Which of the following statements is closest to your view? Statement A: Communities are stronger when they are made up of people from different ethnic groups, races, or religions. Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
+
+## q_31_baseline: We are now interested in learning about social life at AAU. Thinking about the average week, how many friends or family members do you talk with on the phone, online, or in person?
 
 ## q74_1: Please tell me how often the following happens: - My ethnic group is discriminated against by members of other groups. 
 
 ## recode values 
 
-dat$q9_baseline[dat$q9_baseline != 'Tigre'] <- 0
-dat$q9_baseline[dat$q9_baseline == 'Tigre'] <- 1
+dat$q5_baseline[dat$q5_baseline == 'Urban'] <- TRUE
+dat$q5_baseline[dat$q5_baseline == 'Rural'] <- FALSE
+
+dat$q9_baseline[dat$q9_baseline != 'Tigre'] <- TRUE
+dat$q9_baseline[dat$q9_baseline == 'Tigre'] <- FALSE
+
+dat$q20_baseline[dat$q20_baseline == 'I agree strongly with A'] <- 4
+dat$q20_baseline[dat$q20_baseline == 'I agree with A'] <-3
+dat$q20_baseline[dat$q20_baseline == 'I agree with neither'] <- 2
+dat$q20_baseline[dat$q20_baseline == 'I agree with B'] <- 1
+dat$q20_baseline[dat$q20_baseline == 'I agree strongly with B'] <- 0
+
+dat$q31_baseline[dat$q31_baseline > 1000] <- NA
 
 dat$q74_1[dat$q74_1 == 'Never'] <- 0
 dat$q74_1[dat$q74_1 == 'Frequently'] <- 1
@@ -183,22 +200,27 @@ dat$q74_1[dat$q74_1 == 'Always'] <- 2
 ## rename
 
 dat <- dplyr::rename(dat,
+                     urban = q5_baseline,
                      tigray = q9_baseline,
+                     diverse_communities = q20_baseline,
+                     # contacts = dat$q31_baseline,
                      discrimination = q74_1)
 
-## convert to numeric
+## convert variables
 
+dat$urban <- as.logical(dat$urban)
+dat$tigray <- as.logical(dat$tigray)
+dat$diverse_communities <- as.numeric(dat$diverse_communities)
 dat$discrimination <- as.numeric(dat$discrimination)
-dat$tigray <- as.numeric(dat$tigray)
 
 ## subset data
 
 dat <- dat[, c('response_id', 'ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 
-               'tigray', 'discrimination')]
+               'urban', 'tigray', 'diverse_communities', 'discrimination')]
 
 
 
-## create indices ----------------------------------------------------------------
+## calculate z-scores and indices ------------------------------------------------
 
 ## copy data frame
 
@@ -212,14 +234,15 @@ z_score = function(x){
   (x - mean) / sd
 }
 
-## create vector with colunm names
+## create vector with colunm names to be transformed to z-scores
 
-columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'tigray', 'discrimination')
+columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline')
 
 # calculate and store z-scores
 
 for (i in columns) {
   dat_z[[i]] <- z_score(dat_z[[i]])
+  print(columns[i])
 }
 
 ## calculate and store averaged z-scores
@@ -229,9 +252,6 @@ dat_z$ethnic_index <- rowMeans(
 
 dat_z$national_index <- rowMeans(
   dat_z[, c('contact_govt_baseline', 'ethiopian_people_baseline')])
-
-## merge data
-
 ```
 
 ```{r, fig.height = 3.5}
@@ -284,37 +304,28 @@ plot(dat_z$ethnic_index, dat_z$national_index,
      pch = 16,
      abline(m1))
 
-
-
-## interaction --------------------------------------------------------------------
+## interaction  -------------------------------------------------------------------
 
 ## fit model
 
-m2 <- lm(national_index ~ ethnic_index * tigray, data = dat_z)
-
+m2 <- lm(national_index ~ ethnic_index * discrimination, data = dat_z)
 summary(m2)
 
-## scatter plot
+## dual indentifiers --------------------------------------------------------------
 
-## plot non-Tigrayans 
-plot(dat_z$ethnic_index[dat$tigray == 0], dat_z$national_index[dat$tigray == 0],
-     main = 'National vs Ethnic Identification',
-     xlab = 'Ethnic Identification',
-     ylab = 'National Identification',
-     pch = 16)
-## add regression line
-abline(m1)
-## add points for Tigray
-points(dat_z$ethnic_index[dat$tigray == 1], dat_z$national_index[dat$tigray == 1],
-       col = 'darkred')
+## create indicator variable for dual identification
 
-sum(is.na(dat_z$ethnic_index))
-summary(dat$tigray)
+dat_z$dual_id <- NA 
+dat_z$dual_id[dat_z$ethnic_index > 0 & dat_z$national_index > 0] <- TRUE
+dat_z$dual_id[ !(dat_z$ethnic_index > 0 & dat_z$national_index > 0)] <- FALSE
+
+
+prop.table(table(dat_z$dual_id))
 ```
 
 ### Conclusion
 
-This also implies that the framing of survey questions such as that mentioned in the introduction fail to adequately measure ethnic identification and national identitification. They cannot account for people who identify with both their ethnicity and their nationality. Hence, ...
+This also implies that the framing of survey questions such as that mentioned in the introduction fail to adequately measure ethnic identification and national identification. They cannot account for people who identify with both their ethnicity and their nationality. Hence, ...
 
 ### References
 
@@ -360,7 +371,5 @@ Q20 Which of the following statements is closest to your view?
 -   Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
 
 Q31 We are now interested in learning about social life at AAU. Thinking about the average week, how many friends or family members do you talk with on the phone, online, or in person?
-
-The following are part of the endline survey ONLY
 
 Q74_1 Please tell me how often the following happens: - My ethnic group is discriminated against by members of other groups.
