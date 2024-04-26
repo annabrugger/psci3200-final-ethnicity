@@ -39,7 +39,7 @@ There seems to be little evidence on the social identities of non-migrant commun
 
 -   @davis1999 reports two different forms of Basque identification. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from its perception of being Basque. It seems like dual identification might be possible among individuals who hold an apolitical form of ethnic identification.
 
-### Hypothesis
+### Research Design
 
 I hypothesize that ethnic and national identification are compatible. Hence, when measuring the two independently, there should be no negative relationship between them.
 
@@ -50,8 +50,6 @@ The above survey question reflects a unidimensional conception of identity. An i
 ![](images/Screenshot%202024-04-07%20133304.png)
 
 If ethnic and national identification are incompatible, all observations will cluster on the dashed diagonal in Figure 2. However, if the hypothesis is correct, we will see significant spread around the diagonal and might also find observations in the first and third quadrants
-
-### Research Design
 
 I use the follwing linear regression model to estimate the relationship between ethnic identification and national identification.
 
@@ -256,7 +254,7 @@ dat_z$national_index <- rowMeans(
 
 **Z-Scores**
 
-```{r, fig.height = 12}
+```{r, fig.height = 11, fig.width = 5}
 #| echo: false
 #| warning: false
 #| message: false
@@ -270,6 +268,15 @@ dat_z$national_index <- rowMeans(
 
 # length(dat_z$response_id[!is.na(dat_z$national_index)])
 #> [1] 620
+
+# length(dat_z$response_id[!is.na(dat_z$diverse_communities)])
+#> [1] 821
+
+# length(dat_z$response_id[!is.na(dat_z$discrimination)])
+#> [1] 425
+
+# length(dat_z$response_id[!is.na(dat_z$contacts)])
+#> [1] 800
 
 ## density plots
 
@@ -285,15 +292,15 @@ plot(density(dat_z$national_index, na.rm = T),
 
 plot(density(dat_z$diverse_communities, na.rm = T),
      main = 'Belief that Diverse \n Communities Are Stronger',
-     xlab = 'N = ')
+     xlab = 'N = 821')
 
 plot(density(dat_z$discrimination, na.rm = T),
      main = 'Perceived Discrimination',
-     xlab = 'N = ')
+     xlab = 'N = 425')
 
 plot(density(dat_z$contacts[dat_z$contacts <= 4], na.rm = T),
      main = 'Social Contacts',
-     xlab = 'N = ')
+     xlab = 'N = 800')
 ```
 
 **Binary Indicators**
@@ -302,9 +309,17 @@ plot(density(dat_z$contacts[dat_z$contacts <= 4], na.rm = T),
 
 par(mfrow=c(1,2))
 
-hist(as.numeric(dat_z$urban))  
+hist(as.numeric(dat_z$urban),
+     main = 'Urban',
+     breaks = c(0, 0.5, 1),
+     right = FALSE,
+     labels = c('0', '1'))
 
-hist(as.numeric(dat_z$tigray))
+hist(as.numeric(dat_z$tigray),
+     main = 'Tigrayan',
+     breaks = c(0, 0.5, 1),
+     right = FALSE,
+     labels = c('0', '1'))
 ```
 
 ### Results
