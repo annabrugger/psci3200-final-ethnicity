@@ -182,8 +182,8 @@ dat <- dplyr::rename(dat,
 dat$q5_baseline[dat$q5_baseline == 'Urban'] <- TRUE
 dat$q5_baseline[dat$q5_baseline == 'Rural'] <- FALSE
 
-dat$q9_baseline[dat$q9_baseline != 'Tigre'] <- TRUE
-dat$q9_baseline[dat$q9_baseline == 'Tigre'] <- FALSE
+dat$q9_baseline[dat$q9_baseline != 'Tigre'] <- FALSE
+dat$q9_baseline[dat$q9_baseline == 'Tigre'] <- TRUE
 
 dat$q20_baseline[dat$q20_baseline == 'I agree strongly with A'] <- 4
 dat$q20_baseline[dat$q20_baseline == 'I agree with A'] <-3
@@ -203,8 +203,9 @@ dat <- dplyr::rename(dat,
                      urban = q5_baseline,
                      tigray = q9_baseline,
                      diverse_communities = q20_baseline,
-                     # contacts = dat$q31_baseline,
                      discrimination = q74_1)
+
+names(dat)[names(dat) == 'q31_baseline'] <- 'contacts'
 
 ## convert variables
 
@@ -216,7 +217,7 @@ dat$discrimination <- as.numeric(dat$discrimination)
 ## subset data
 
 dat <- dat[, c('response_id', 'ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 
-               'urban', 'tigray', 'diverse_communities', 'discrimination')]
+               'urban', 'tigray', 'diverse_communities', 'discrimination', 'contacts')]
 
 
 
@@ -236,13 +237,12 @@ z_score = function(x){
 
 ## create vector with colunm names to be transformed to z-scores
 
-columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline')
+columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'diverse_communities', 'discrimination', 'contacts')
 
 # calculate and store z-scores
 
 for (i in columns) {
   dat_z[[i]] <- z_score(dat_z[[i]])
-  print(columns[i])
 }
 
 ## calculate and store averaged z-scores
@@ -254,7 +254,9 @@ dat_z$national_index <- rowMeans(
   dat_z[, c('contact_govt_baseline', 'ethiopian_people_baseline')])
 ```
 
-```{r, fig.height = 3.5}
+**Z-Scores**
+
+```{r, fig.height = 12}
 #| echo: false
 #| warning: false
 #| message: false
@@ -271,7 +273,7 @@ dat_z$national_index <- rowMeans(
 
 ## density plots
 
-par(mfrow=c(1,2))
+par(mfrow=c(4,2))
 
 plot(density(dat_z$ethnic_index, na.rm = T),
      main = 'Ethnic Identification',
@@ -280,6 +282,29 @@ plot(density(dat_z$ethnic_index, na.rm = T),
 plot(density(dat_z$national_index, na.rm = T),
      main = 'National Identification',
      xlab = 'N = 620')
+
+plot(density(dat_z$diverse_communities, na.rm = T),
+     main = 'Belief that Diverse \n Communities Are Stronger',
+     xlab = 'N = ')
+
+plot(density(dat_z$discrimination, na.rm = T),
+     main = 'Perceived Discrimination',
+     xlab = 'N = ')
+
+plot(density(dat_z$contacts[dat_z$contacts <= 4], na.rm = T),
+     main = 'Social Contacts',
+     xlab = 'N = ')
+```
+
+**Binary Indicators**
+
+```{r}
+
+par(mfrow=c(1,2))
+
+hist(as.numeric(dat_z$urban))  
+
+hist(as.numeric(dat_z$tigray))
 ```
 
 ### Results
