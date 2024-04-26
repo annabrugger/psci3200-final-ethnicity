@@ -25,9 +25,9 @@ text-align: justify}
 ```
 ### Introduction
 
-Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc). and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* \[see, for example, @afrobarometer2020\]. This question reflects an assumption which seems to be common ... - that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian students, I argue that this assumption is false and that some people identify with both their national and their ethnic identities.
+Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc). and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects an assumption which seems to be common ... - that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian students, I argue that this assumption is false and that some people identify with both their national and their ethnic identities.
 
-### Overview of the Literature
+### Literature Review
 
 Studies that have been conducted in migrant communities consistently find that ethnic identification and national identification are compatible.
 
@@ -35,7 +35,7 @@ Studies that have been conducted in migrant communities consistently find that e
 
 -   A study of adolescent immigrants from 13 countries confirms Ryder's findings. The relationship between ethnic and national identification varies widely both across countries and across individuals -- reaching from negative to no relationship to positive [@berry2006].
 
-There seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries. ... Interesting ...
+There seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries.
 
 -   @davis1999 reports two different forms of Basque identification. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from its perception of being Basque. It seems like dual identification might be possible among individuals who hold an apolitical form of ethnic identification.
 
@@ -252,7 +252,29 @@ dat_z$national_index <- rowMeans(
   dat_z[, c('contact_govt_baseline', 'ethiopian_people_baseline')])
 ```
 
-**Averaged Z-Scores**
+**Binary Indicators**
+
+```{r, fig.height = 2.5, fig.width = 9}
+#| echo: false
+#| warning: false
+#| message: false
+
+par(mfrow=c(1,3))
+
+hist(as.numeric(dat_z$urban),
+     main = 'Urban',
+     breaks = c(0, 0.5, 1),
+     right = FALSE,
+     labels = c('0', '1'))
+
+hist(as.numeric(dat_z$tigray),
+     main = 'Tigrayan',
+     breaks = c(0, 0.5, 1),
+     right = FALSE,
+     labels = c('0', '1'))
+```
+
+**Z-Scores**
 
 ```{r, fig.height = 5, fig.width = 9}
 #| echo: false
@@ -303,72 +325,48 @@ plot(density(dat_z$contacts[dat_z$contacts <= 4], na.rm = T),
      xlab = 'N = 800')
 ```
 
-**Binary Indicators**
-
-```{r, fig.height = 2.5, fig.width = 9}
-#| echo: false
-#| warning: false
-#| message: false
-
-par(mfrow=c(1,3))
-
-hist(as.numeric(dat_z$urban),
-     main = 'Urban',
-     breaks = c(0, 0.5, 1),
-     right = FALSE,
-     labels = c('0', '1'))
-
-hist(as.numeric(dat_z$tigray),
-     main = 'Tigrayan',
-     breaks = c(0, 0.5, 1),
-     right = FALSE,
-     labels = c('0', '1'))
-```
-
 ### Results
 
-```{r}
+```{r, fig.height = 4.75, fig.width = 5.75}
 #| echo: false
 #| warning: false
 #| message: false
 
-## bivariate regression -----------------------------------------------------------
+## scatter plot -------------------------------------------------------------------
 
-## fit linear model
+## estimate models
 
-m1 <- lm(national_index ~ ethnic_index, data = dat_z)
+models <- list()
+models[['Bivariate']] <- lm(national_index ~ ethnic_index, data = dat_z)
+models[['Bivariate w/ Control Variables']] <- lm(national_index ~ ethnic_index + urban + contacts, data = dat_z)
+models[['Interaction']] <- lm(national_index ~ ethnic_index * discrimination, data = dat_z)
 
-## scatter plot
+## create plot
 
 plot(dat_z$ethnic_index, dat_z$national_index,
      main = 'National vs Ethnic Identification',
      xlab = 'Ethnic Identification',
      ylab = 'National Identification',
      pch = 16,
-     abline(m1))
-
-## multivariate regression --------------------------------------------------------
-
-## estimate model 
-
-m2 <- lm(national_index ~ ethnic_index + urban + contacts, data = dat_z)
-
-## summarize model
-
-stargazer::stargazer(m1, m2, type = 'text')
-
-
-
-## interaction  -------------------------------------------------------------------
-
-## fit model
-
-m2 <- lm(national_index ~ ethnic_index * discrimination, data = dat_z)
-summary(m2)
+     abline(models[['Bivariate']]))
 ```
 
 ```{r}
 #| echo: false
+#| warning: false
+#| message: false
+
+## regression table --------------------------------------------------------------
+
+modelsummary(
+  models,
+  estimate  = "{estimate}{stars} ({std.error})",
+             statistic = NULL,
+  gof_omit = 'IC|RMSE|Log|F|R2$|Std.')
+```
+
+```{r}
+#| include: false
 #| warning: false
 #| message: false
 
@@ -380,8 +378,10 @@ dat_z$dual_id <- NA
 dat_z$dual_id[dat_z$ethnic_index > 0 & dat_z$national_index > 0] <- TRUE
 dat_z$dual_id[ !(dat_z$ethnic_index > 0 & dat_z$national_index > 0)] <- FALSE
 
-mean(dat_z$urban[dat_z$dual_id == 1], na.rm = TRUE) 
-
+t.test(dat_z$urban[dat_z$dual_id == 1], dat_z$urban[dat_z$dual_id == 0]) 
+t.test(dat_z$contacts[dat_z$dual_id == 1], dat_z$contacts[dat_z$dual_id == 0])
+t.test(dat_z$tigray[dat_z$dual_id == 1], dat_z$tigray[dat_z$dual_id == 0])
+t.test(dat_z$discrimination[dat_z$dual_id == 1], dat_z$discrimination[dat_z$dual_id == 0])
 ```
 
 ### Conclusion
