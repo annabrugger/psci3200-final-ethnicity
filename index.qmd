@@ -25,19 +25,17 @@ text-align: justify}
 ```
 ### Introduction
 
-Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc). and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects an assumption which seems to be common ... - that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian students, I argue that this assumption is false and that some people identify with both their national and their ethnic identities.
+Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc). and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian students, I argue that this assumption is false and that some people identify with both their national and their ethnic identities. Furthermore, I find that many social ties do not make individuals more likely to be dual identifiers, but living in rural areas does.
 
 ### Literature Review
 
-Studies that have been conducted in migrant communities consistently find that ethnic identification and national identification are compatible.
+Studies that have been conducted in migrant communities consistently find that ethnic identification and national identification are compatible. @ryder2000 find that ethnic identification and national identification are independent and have distinctive correlations with external variables among immigrants in the US. A study of adolescent immigrants from 13 countries confirms their findings. The relationship between ethnic and national identification varies widely both across countries and across individuals -- reaching from negative to no relationship to positive [@berry2006].
 
--   @ryder2000 find that ethnic identification and national identification are independent and have distinctive correlations with external variables among immigrants in the US.
+There seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries. However, @davis1999 reports two different forms of identification among Basque people. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from its perception of being Basque. It seems like dual identification may be possible among individuals who hold an apolitical form of ethnic identification.
 
--   A study of adolescent immigrants from 13 countries confirms Ryder's findings. The relationship between ethnic and national identification varies widely both across countries and across individuals -- reaching from negative to no relationship to positive [@berry2006].
+### Data
 
-There seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries.
-
--   @davis1999 reports two different forms of Basque identification. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from its perception of being Basque. It seems like dual identification might be possible among individuals who hold an apolitical form of ethnic identification.
+I am using a representative survey of 825 students of Addis Ababa University. The survey consists of two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania.
 
 ### Research Design
 
@@ -51,17 +49,20 @@ The above survey question reflects a unidimensional conception of identity. An i
 
 If ethnic and national identification are incompatible, all observations will cluster on the dashed diagonal in Figure 2. However, if the hypothesis is correct, we will see significant spread around the diagonal and might also find observations in the first and third quadrants
 
-I use the follwing linear regression model to estimate the relationship between ethnic identification and national identification.
+To estimate the relationship between ethnic identification and national identification, I use the following regression model.
 
-$$ Y_i =\beta X_i + \epsilon_i $$
+$$ NationalID_i =\beta_1 * EthnicID_i + \beta_2 * Contacts_i + \beta_3 * Urban_i + \epsilon_i $$
 
-X is the averaged z-score of two measures of ethnic identification (see the Appendix for question wording), Y the averaged z-score of two measures of national identification, and $\epsilon$ the error term.
+$EthnicID$ is the averaged z-score of two measures of ethnic identification (see the Appendix for question wording), $NationalID$ the averaged z-score of two measures of national identification, and $\epsilon$ the error term.
 
-Additionally, I will explore if there are any characteristics particular to those individuals who identify both with their ethnicity and nationality. Do they tend to have more social connections, for example? Do they predominantly live in urban areas? This might spark some ideas about how to foster dual-identification in fractured societies.
+Additionally, I introduce an interaction term ...
 
-### Data
+$$ NationalID_i =\beta_1 * EthnicID_i + \beta_2 * Discrimination_i + \beta_3 * (EthnicID_i * Discrimination_i) + \epsilon_i $$
 
-I am using a representative survey of 825 students of Addis Ababa University. The survey consists of two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania.
+This might also spark some ideas about how to foster dual-identification in fractured societies.
+
+Does it make sense to have controls and interaction in separate models?
+
 
 ### Descriptives
 
@@ -327,6 +328,8 @@ plot(density(dat_z$contacts[dat_z$contacts <= 4], na.rm = T),
 
 ### Results
 
+The graph below depicts the relationship between ethnic and national identification.
+
 ```{r, fig.height = 4.75, fig.width = 5.75}
 #| echo: false
 #| warning: false
@@ -338,7 +341,7 @@ plot(density(dat_z$contacts[dat_z$contacts <= 4], na.rm = T),
 
 models <- list()
 models[['Bivariate']] <- lm(national_index ~ ethnic_index, data = dat_z)
-models[['Bivariate w/ Control Variables']] <- lm(national_index ~ ethnic_index + urban + contacts, data = dat_z)
+models[['Bivariate w/ Control Variables']] <- lm(national_index ~ ethnic_index + contacts + urban, data = dat_z)
 models[['Interaction']] <- lm(national_index ~ ethnic_index * discrimination, data = dat_z)
 
 ## create plot
@@ -348,6 +351,7 @@ plot(dat_z$ethnic_index, dat_z$national_index,
      xlab = 'Ethnic Identification',
      ylab = 'National Identification',
      pch = 16,
+     col = 'grey',
      abline(models[['Bivariate']]))
 ```
 
@@ -387,6 +391,8 @@ t.test(dat_z$discrimination[dat_z$dual_id == 1], dat_z$discrimination[dat_z$dual
 ### Conclusion
 
 This also implies that the framing of survey questions such as that mentioned in the introduction fail to adequately measure ethnic identification and national identification. They cannot account for people who identify with both their ethnicity and their nationality. Hence, ...
+
+A woman doing embroidery on a bench on the opposite side of the statute
 
 ### References
 
