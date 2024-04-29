@@ -5,6 +5,7 @@ project:
 website:
   title: " "
   navbar:
+    background: primary
     left:
       - href: index.qmd
         text: PSCI 3200 Final Project
@@ -12,7 +13,6 @@ website:
 format:
   html:
     theme: cosmo
-    font-family: sans-serif;
     css: styles.css
     toc: true
 

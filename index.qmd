@@ -173,12 +173,6 @@ dat <- dplyr::rename(dat,
 
 ## recode values 
 
-dat$q5_baseline[dat$q5_baseline == 'Urban'] <- TRUE
-dat$q5_baseline[dat$q5_baseline == 'Rural'] <- FALSE
-
-dat$q9_baseline[dat$q9_baseline != 'Tigre'] <- FALSE
-dat$q9_baseline[dat$q9_baseline == 'Tigre'] <- TRUE
-
 dat$q31_baseline[dat$q31_baseline > 1000] <- NA
 
 dat$q74_1[dat$q74_1 == 'Never'] <- 0
@@ -187,23 +181,16 @@ dat$q74_1[dat$q74_1 == 'Always'] <- 2
 
 ## rename
 
-dat <- dplyr::rename(dat,
-                     urban = q5_baseline,
-                     tigray = q9_baseline,
-                     discrimination = q74_1)
-
+names(dat)[names(dat) == 'q74_1'] <- 'discrimination'
 names(dat)[names(dat) == 'q31_baseline'] <- 'social_ties'
 
-## convert variables
+## convert discrimination variable
 
-dat$urban <- as.logical(dat$urban)
-dat$tigray <- as.logical(dat$tigray)
 dat$discrimination <- as.numeric(dat$discrimination)
 
 ## subset data
 
-dat <- dat[, c('response_id', 'ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 
-               'urban', 'tigray', 'discrimination', 'social_ties')]
+dat <- dat[, c('response_id', 'ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'discrimination', 'social_ties')]
 
 
 
@@ -223,7 +210,7 @@ z_score = function(x){
 
 ## create vector with colunm names to be transformed to z-scores
 
-columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'social_ties')
+columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'social_ties', 'discrimination')
 
 # calculate and store z-scores
 
@@ -233,10 +220,10 @@ for (i in columns) {
 
 ## calculate and store averaged z-scores
 
-dat_z$ethnic_index <- rowMeans(
+dat_z$ethnicID <- rowMeans(
   dat_z[, c('ethnic_group_baseline', 'federal_states_baseline')])
 
-dat_z$national_index <- rowMeans(
+dat_z$nationalID <- rowMeans(
   dat_z[, c('contact_govt_baseline', 'ethiopian_people_baseline')])
 ```
 
@@ -252,21 +239,6 @@ dat_z$national_index <- rowMeans(
 par(mfrow=c(1,3))
 
 # ## Urban vs. Rural
-#
-#urban_graph <- data.frame(prop.table(table(dat$urban)))
-# 
-# barplot(100 * urban_graph$Freq, 
-#         names.arg = c('Urban', 'Rural'), 
-#         main = 'Urban vs. Rural',
-#         ylab = 'Percent')
-
-# ## Ethnicity
-# 
-# tigray_graph <- data.frame(prop.table(table(dat$tigray)))
-# 
-# barplot(100 * tigray_graph$Freq, 
-#         names.arg = c('Other', 'Tigray'), 
-#         main = 'Ethnicity')
 
 ## Perceived Discrimination
 
@@ -289,14 +261,14 @@ par(mfrow=c(1,3))
 
 ## Ethnicity Index
 
-plot(density(dat_z$ethnic_index, na.rm = T),
+plot(density(dat_z$ethnicID, na.rm = T),
      main = 'Z-Score: Ethnic Identification',
      xlab = ' ',
      ylab = ' ')
 
 ## National Index
 
-plot(density(dat_z$national_index, na.rm = T),
+plot(density(dat_z$nationalID, na.rm = T),
      main = 'Z-Score: National Identification',
      xlab = ' ',
      ylab = ' ')
@@ -315,13 +287,13 @@ The graph below depicts ethnic and national identification among the students.
 
 ## create plot
 
-plot(dat_z$ethnic_index, dat_z$national_index,
+plot(dat_z$ethnicID, dat_z$nationalID,
      main = 'National vs Ethnic Identification',
      xlab = 'Ethnic Identification',
      ylab = 'National Identification',
      pch = 16,
      col = 'grey',
-     abline(lm(national_index ~ ethnic_index, data = dat_z)))
+     abline(lm(nationalID ~ ethnicID, data = dat_z)))
 ```
 
 There are observations in all four quadrants, and there seems to be no significant relationship between the two variables. The regression outputs confirm these findings:
@@ -336,8 +308,8 @@ There are observations in all four quadrants, and there seems to be no significa
 ## estimate models
 
 models <- list()
-models[['Bivariate']] <- lm(national_index ~ ethnic_index + social_ties, data = dat_z)
-models[['Interaction']] <- lm(national_index ~ ethnic_index * discrimination, data = dat_z)
+models[['Bivariate']] <- lm(nationalID ~ ethnicID + social_ties, data = dat_z)
+models[['Interaction']] <- lm(nationalID ~ ethnicID * discrimination, data = dat_z)
 
 ## print table 
 
@@ -348,15 +320,11 @@ modelsummary(
   gof_omit = 'IC|RMSE|Log|F|R2$|Std.')
 ```
 
-There is no significant negative correlation between national and ethnic identification. In contrast, the coefficient for $EthnicID$ is positive, even though not significant. Furthermore, the coefficient for $SocialTies$ is positive but not significant either. This means that students with more social ties are not more likely to be dual identifiers. The coefficient for
-
-Interaction:
+There is no significant negative correlation between national and ethnic identification. In contrast, the coefficient for $EthnicID$ is positive, even though not significant. Furthermore, the coefficient for $SocialTies$ is positive, but not significant. This means that students with more social ties are not more likely to be dual identifiers. Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ is not statistically significant either. This means that the relationship between ethnic identification and national identification does not change across levels of perceived discrimination.
 
 ### Conclusion
 
-This implies that the framing of survey questions such as that mentioned in the introduction fail to adequately measure ethnic identification and national identification. They cannot account for people who identify with both their ethnicity and their nationality. Even though the unidimensional model may be accurate in some contexts, we still need the bidimensional model to demonstrate its accuracy by showing that there is a inverse correlation.
-
-Overall, ... Possibility to achieve national identification even in ethnically diverse societies. National identification, in turn, can have a positive impact on state capacity and public good provision (due to willingness to pay taxes and higher levels of trust).
+Overall, it has become clear that ethnic identification and national identification can be compatible. Hence, the framing of survey questions such as that mentioned in the introduction fail to adequately measure ethnic identification and national identification. They cannot account for people who identify with both their ethnicity and their nationality. Even though the unidimensional model may be accurate in some contexts, we still need the bidimensional model to demonstrate its accuracy by showing that there is an inverse correlation. My findings also suggest that it is possible to achieve national identification even in ethnically diverse societies. National identification, in turn, can have a positive impact on state capacity and public good provision (due to willingness to pay taxes and higher levels of trust).
 
 ### References
 
