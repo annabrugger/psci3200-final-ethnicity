@@ -25,17 +25,17 @@ text-align: justify}
 ```
 ### Introduction
 
-Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question is based on the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false because some people identify with both their national and their ethnic identities. I also find that neither social connectedness nor perceived discrimination change the likelihood of dual identification.
+Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false because there is no negative correlation between the two forms of identification. This holds true across different levels of perceived discrimination and when controlling for the number of social ties a student has.
 
 ### Literature Review
 
-Studies conducted in migrant communities consistently find that ethnic and national identification are compatible. For instance, @ryder2000 find that ethnic identification and national identification are independent and have distinctive correlations with external variables among immigrants in the US. A more recent study, surveying adolescent immigrants from 13 countries, confirms these findings. The relationship between ethnic and national identification varies widely both across countries and across individuals, ranging from negative to no relationship to positive [@berry2006].
+Studies conducted in migrant communities consistently find that ethnic and national identification are compatible. For instance, @ryder2000 report that ethnic identification and national identification are independent and have distinctive correlations with external variables during the process of acculturation among immigrants in the US. A more recent study, surveying adolescent immigrants from 13 countries, confirms these findings. The relationship between ethnic and national identification varies widely both across countries and across individuals, ranging from negative to no relationship to positive [@berry2006].
 
-There seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries. However, @davis1999 reports two different forms of identification among the Basque people. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from the perception of being Basque. It seems like dual identification may be possible among individuals who hold such an apolitical form of ethnic identification.
+So far, there seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries. However, @davis1999 reports two different forms of identification among the Basque people. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from the perception of being Basque. It seems like dual identification may be possible among individuals who hold such an apolitical form of ethnic identification.
 
 ### Data
 
-I use data from a representative survey of 825 students of Addis Ababa University (AAU). The survey consists of two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania [@DevLabAAU].
+In order to evaluate the assumption that ethnic and national identification are incompatible, I use data from a representative survey of 825 students of Addis Ababa University (AAU). The survey consists of two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania [@DevLabAAU].
 
 ### Research Design
 
@@ -43,25 +43,33 @@ I hypothesize that ethnic and national identification are compatible. Hence, whe
 
 *Hypothesis: There is no significant negative correlation between ethnic and national identification.*
 
-The above survey question reflects a unidimensional conception of identity. An increase in ethnic identification is directly associated with the same decrease in national identity (Figure 1). The bidimensional conception of identity embraced by my hypothesis, in contrast, reflects that ethnic and national identification can be independent of each other (Figure 2).
+The survey question mentioned in the introduction reflects a unidimensional conception of identity. An increase in ethnic identification is directly associated with the same decrease in national identity (Figure 1). The bidimensional conception of identity embraced by my hypothesis, in contrast, reflects that ethnic and national identification can be independent of each other (Figure 2).
 
 ![](images/Screenshot%202024-04-07%20133304.png)
 
 If ethnic and national identification are incompatible, all observations will cluster on the dashed diagonal in Figure 2. However, if the hypothesis is correct, we will see significant spread around the diagonal and also find observations in the first and third quadrants.
 
-To estimate the relationship between ethnic identification and national identification, I use the following regression model.
+To estimate the relationship between ethnic identification and national identification, I will use the following regression model.
+
+$$ NationalID_i = \alpha + \beta_1 * EthnicID_i +  \epsilon_i $$
+
+$NationalID$ is the averaged z-score of two measures of national identification (see the Appendix for question wording), $EthnicID$ the averaged z-score of two measures of ethnic identification, and $\epsilon$ the error term.
+
+In a second model, I will control for the number of social ties a student has.
 
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * SocialTies_i +  \epsilon_i $$
 
-$NationalID$ is the averaged z-score of two measures of national identification (see the Appendix for question wording), $EthnicID$ the averaged z-score of two measures of ethnic identification, and $\epsilon$ the error term. $SocialTies$ is the z-score of the number of social ties a student has. I control for the number of social ties because students who interact more frequently with others might feel more connected to both their ethnic group and their nationality.
+$SocialTies$ is the z-score of the number of social ties. Social ties could be a confounding variable because students who interact more frequently with others might feel more connected to both their ethnic group and their nationality. Hence, the relationship between ethnic and national identification would be more negative when controlling for the number of social ties.
 
-Additionally, I use a second regression model with interaction term to examine whether the relationship between ethnic identification and national identification changes across different levels of perceived discrimination.
+FInally, I will introduce an interaction term to examine whether the relationship between ethnic identification and national identification changes across different levels of perceived discrimination.
 
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * Discrimination_i + \beta_3 * (EthnicID_i * Discrimination_i) + \epsilon_i $$
 
-$Discrimination$ measures perceived discrimination and can take the values 'never', 'frequently', and 'always'. Again, I use z-scores for the regression. The assumption underlying this model is that perceived discrimination could make it harder to identify with both ethnicity and nationality at the same time. If a student feels like their ethnic group is discriminated against by other ethnic groups, they may perceive the two forms of identification to be incompatible. Therefore, they are forced to choose between one and the other, and we would expect to see a more negative relationship between ethnic identification and national identification at higher levels of perceived discrimination. Such patterns have been found among Latino college students in the US [@fuller2013national].
+$Discrimination$ measures perceived discrimination and can take the values 'never', 'frequently', and 'always'. Again, I use z-scores for the regression. The assumption underlying this model is that discrimination could make it harder for students to identify with both their ethnicity and nationality at the same time. If a student feels like their ethnic group is discriminated against by other ethnic groups, they may perceive the two forms of identification to be mutually exclusive. In that case, they would have to choose between one and the other, and we would see a negative relationship between ethnic identification and national identification at high levels of perceived discrimination. Such patterns have been found, for example, among Latino college students in the US [@fuller2013national].
 
 ### Descriptives
+
+The graphs below visualize the distributions of the four variables I use for my analysis.
 
 ```{r}
 #| include: false
@@ -238,45 +246,49 @@ dat_z$nationalID <- rowMeans(
 
 par(mfrow=c(1,3))
 
-# ## Urban vs. Rural
-
-## Perceived Discrimination
-
-discrimination_graph <- data.frame(prop.table(table(dat$discrimination)))
-
-barplot(100 * discrimination_graph$Freq, 
-        names.arg = c('Never', 'Frequently', 'Always'), 
-        main = 'Perceived Discrimination')
-
-## Social Ties
-
-plot(density(dat$social_ties[dat$social_ties <= 50], na.rm = T),
-     main = 'Number of Social Ties',
-     xlab = ' ',
-     xlim = c(0,50))
-
-## Set Graphic Parameters
-
-par(mfrow=c(1,3))
-
 ## Ethnicity Index
 
 plot(density(dat_z$ethnicID, na.rm = T),
      main = 'Z-Score: Ethnic Identification',
      xlab = ' ',
-     ylab = ' ')
+     ylab = 'Density')
 
 ## National Index
 
 plot(density(dat_z$nationalID, na.rm = T),
      main = 'Z-Score: National Identification',
      xlab = ' ',
-     ylab = ' ')
+     ylab = 'Density')
+
+## Set Graphic Parameters
+
+par(mfrow=c(1,3))
+
+## Social Ties
+
+plot(density(dat$social_ties[dat$social_ties <= 55], na.rm = T),
+     main = 'Number of Social Ties',
+     xlab = ' ',
+     xlim = c(0,55))
+
+## Create Dataframe with Relative Frequencies of Levels of Perceived Discrimination
+
+discrimination_graph <- data.frame(prop.table(table(dat$discrimination)))
+
+## Plot Perceived Discrimination 
+
+barplot(100 * discrimination_graph$Freq, 
+        names.arg = c('Never', 'Frequently', 'Always'), 
+        main = 'Perceived Discrimination',
+        ylim = c(0, 50),
+        ylab = 'Percent')
 ```
+
+The distributions of ethnic and national identification, as well as the number of social ties, are negatively skewed. This implies that there are few students with relatively strong national identification, few with relatively strong ethnic identification, and few with a large number of social ties. The mean number of social ties is thereby 15. Almost half of the students say that their ethnic group is 'frequently' discriminated against, followed by about a third who say that their group is 'never' discriminated against. Eighteen percent say their group is 'always' discriminated against.
 
 ### Results
 
-The graph below depicts ethnic and national identification among the students.
+The graph below depicts ethnic and national identification among the students as well as the line of best fit resulting from bivariate regression without any controls.
 
 ```{r, fig.height = 4.75, fig.width = 5.75}
 #| echo: false
@@ -296,7 +308,7 @@ plot(dat_z$ethnicID, dat_z$nationalID,
      abline(lm(nationalID ~ ethnicID, data = dat_z)))
 ```
 
-There are observations in all four quadrants, and there seems to be no significant relationship between the two variables. The regression outputs confirm these findings:
+We can see observations in all four quadrants, and the regression line has a slightly positive slope, implying that there is no negative correlation between the two forms of identification. This is in line with my hypothesis, and the regression outputs confirm those findings as well as their robustness against potential confounders. The following table provides the summaries of the three models outlined above.
 
 ```{r}
 #| echo: false
@@ -308,7 +320,8 @@ There are observations in all four quadrants, and there seems to be no significa
 ## estimate models
 
 models <- list()
-models[['Bivariate']] <- lm(nationalID ~ ethnicID + social_ties, data = dat_z)
+models[['Bivariate']] <- lm(nationalID ~ ethnicID, data = dat_z)
+models[['Bivariate w/ Control']] <- lm(nationalID ~ ethnicID + social_ties, data = dat_z)
 models[['Interaction']] <- lm(nationalID ~ ethnicID * discrimination, data = dat_z)
 
 ## print table 
@@ -320,11 +333,19 @@ modelsummary(
   gof_omit = 'IC|RMSE|Log|F|R2$|Std.')
 ```
 
-There is no significant negative correlation between national and ethnic identification. In contrast, the coefficient for $EthnicID$ is positive, even though not significant. Furthermore, the coefficient for $SocialTies$ is positive, but not significant. This means that students with more social ties are not more likely to be dual identifiers. Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ is not statistically significant either. This means that the relationship between ethnic identification and national identification does not change across levels of perceived discrimination.
+In none of the three models is there a significant negative correlation between national and ethnic identification. In contrast, the coefficients for $EthnicID$ are all positive, even though not significant (0.048, 0.049, and 0.048). Hence, no matter if we control for the number of social ties or the perceived level discrimination, there is no negative correlation between ethnic and national identification.
 
-### Implications
+In the second model, the coefficient for the control variable $SocialTies$ is positive, but small and not significant (0.024). This means that, holding ethnic identification constant, students with more social ties are not significantly more likely to identify as Ethiopian. Having more social ties does increase the probability of dual identification.
 
-Overall, my findings make clear that ethnic identification and national identification can be compatible. Hence, it should be possible to achieve national identification even in diverse societies where people strongly identify with their ethnicity. National identification, in turn, can have a positive impact on state capacity and public good provision. In terms of methodology, my findings suggest that unidimensional models fail to adequately measure social identities. In particular, such models cannot account for people who identify with both their ethnicity and their nationality. Even if unidimensional models may be accurate in some contexts, we still need the bidimensional model to demonstrate the accuracy of unidimensional ones by showing that there is indeed an inverse correlation.
+Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ in the third model is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of discrimination, the relationship between ethnic and national identification is not negative.
+
+### Discussion and Implications
+
+Overall, my findings indicate that there is no tradeoff between ethnic and national identification. A positive implication of this is that dual identification is possible and that there is the potential to achieve national identification even in diverse societies in which people strongly identify with their ethnicity. National identification, in turn, can improve state capacity and public good provision.
+
+Yet, one key limitation of my analysis is that the sample, taken from college students at AAU, is not representative of the Ethiopian population as a whole. College students' social identities may well be different from those of the wider population. For instance, the campus of AAU might be a more ethnically diverse social environment than that the average citizen is used to. Diversity, in turn, may decrease ethnic identification. Furthermore, college students are likely to better educated about and more involved in national politics, and making them more likely to identify as Ethiopian. Hence, further research is necessary to test the external validity of my findings.
+
+In terms of methodology, my findings suggest that unidimensional models fail to adequately measure social identities. In particular, such models cannot account for people who identify with both their ethnicity and their nationality. Even if unidimensional models may be accurate in some contexts, we still need the bidimensional model to demonstrate the accuracy of unidimensional ones by showing that there is indeed a negative correlation between two forms of identification (@ryder2000). Thus, if my hypotesis is valid for broader populations, we will need to reconsider the wording of survey questions designed to capture social identities.
 
 ### References
 
@@ -335,7 +356,7 @@ Overall, my findings make clear that ethnic identification and national identifi
 
 **Ethnic Identity Index**
 
-Now I am going to read out a list of groups that people join or attend. For each one, could you tell me whether you are a CURRENT official leader, an active member, an inactive member, or not a member. - A group of people that share the same ethnicity or culture and meet regularly to discuss or advance the interests of the group (Question 15_2).
+Now I am going to read out a list of groups that people join or attend. For each one, could you tell me whether you are a current official leader, an active member, an inactive member, or not a member. - A group of people that share the same ethnicity or culture and meet regularly to discuss or advance the interests of the group (Question 15_2).
 
 Which of the following statements is closest to your view (Question 23)?
 
