@@ -29,7 +29,7 @@ Many surveys use the following question to probe for respondents' ethnic and nat
 
 ### Literature Review
 
-Studies conducted in migrant communities consistently find that ethnic and national identification are compatible. For instance, @ryder2000 report that ethnic identification and national identification are independent and have distinctive correlations with external variables during the process of acculturation among immigrants in the US. A more recent study, surveying adolescent immigrants from 13 countries, confirms these findings. The relationship between ethnic and national identification varies widely both across countries and across individuals, ranging from negative to no relationship to positive [@berry2006].
+Studies conducted in migrant communities consistently find that ethnic and national identification are compatible. For instance, @ryder2000 report that ethnic identification and national identification are independent and have distinctive correlations with external variables during the process of acculturation among immigrants in the US. In particular, some immigrants appear to incorporate their heritage and mainstream cultural identities. A more recent study, surveying adolescent immigrants from 13 countries, confirms these findings. The relationship between ethnic and national identification varies widely both across countries and across individuals, ranging from negative to no relationship to positive [@berry2006].
 
 So far, there seems to be little evidence on the social identities of non-migrant communities in multi-ethnic countries. However, @davis1999 reports two different forms of identification among the Basque people. One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from the perception of being Basque. It seems like dual identification may be possible among individuals who hold such an apolitical form of ethnic identification.
 
@@ -337,7 +337,7 @@ In none of the three models is there a significant negative correlation between 
 
 In the second model, the coefficient for the control variable $SocialTies$ is positive, but small and not significant (0.024). This means that, holding ethnic identification constant, students with more social ties are not significantly more likely to identify as Ethiopian. Having more social ties does increase the probability of dual identification.
 
-Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ in the third model is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of discrimination, the relationship between ethnic and national identification is not negative.
+Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ in the third model is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of whether students think their group is never, frequently, or always discriminated against, the relationship between ethnic and national identification is not negative.
 
 ### Discussion and Implications
 
