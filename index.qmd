@@ -23,11 +23,11 @@ text-align: justify}
 
 </style>
 ```
-### Introduction
+### 1  Introduction
 
 Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false because there is no negative correlation between the two forms of identification. This holds true across different levels of perceived discrimination and when controlling for the number of social ties a student has.
 
-### Literature Review
+### 2  Literature Review
 
 Studies conducted in migrant communities consistently find that ethnic and national identification are compatible. For instance, @ryder2000 report that ethnic identification and national identification are independent and have distinctive correlations with external variables during the process of acculturation among immigrants in the US. In particular, some immigrants appear to incorporate their heritage and mainstream cultural identities. A more recent study, surveying adolescent immigrants from 13 countries, confirms these findings. The relationship between ethnic and national identification varies widely both across countries and across individuals, ranging from negative to no relationship to positive [@berry2006].
 
@@ -35,11 +35,11 @@ So far, there seems to be little evidence on the social identities of non-migran
 
 **Feedback** The articles give reason to think your hypothesis might be true, but only provide evidence on very different populations/identity sets. If there's any more literature in this area, I'd absolutely love to see it. To really strengthen this, you could also talk about why the research is so focused on this zero-sum conceptualization of identity. Perhaps it has been the case that, historically, people started from ethnic identities and the important question has been centered around how people move from an ethnic to a national ID (see Tanzania). But this misses the potential for national ID to develop in parallel to the existing ethnic ID. 
 
-### Data
+### 3  Data
 
 In order to evaluate the assumption that ethnic and national identification are incompatible, I use data from a representative survey of 825 students at Addis Ababa University (AAU). The survey comprises two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania [@mengsteab2023].
 
-To gauge the strength of respondents' ethnic identification, I use the averaged z-score of measures resulting from two survey questions. The first question asks if the respondent participates in any group that promotes the interests of their ethnicity or culture. The answers are coded on a scale from zero to three, with 0 indicating that the respondent is not a member of such a group and 3 indicating that the respondent is the leader of such a group. The second question asks if the respondent believes that the federal states in Ethiopia should be defined based on ethnic homelands or based on geographic features. The answers are coded on a a scale from zero to three, with 0 indicating a strong preference for division based on geographical features and 3 indicating a strong preference for division based on ethnic homelands.
+To capture the strength of respondents' ethnic identification, I use the averaged z-score of measures resulting from two survey questions. The first question asks if the respondent participates in any group that promotes the interests of their ethnicity or culture. The answers are coded on a scale from zero to three, with 0 indicating that the respondent is not a member of such a group and 3 indicating that the respondent is the leader of such a group. The second question asks if the respondent believes that the federal states in Ethiopia should be defined based on ethnic homelands or based on geographic features. The answers are coded on a a scale from zero to three, with 0 indicating a strong preference for division based on geographical features and 3 indicating a strong preference for division based on ethnic homelands.
 
 Both survey questions imperfectly approximate, rather than perfectly measure, ethnic identification. Relatively strong ethnic identification seems to be a necessary but not sufficient condition for activism in the groups' interest. While activism likely implies strong ethnic identification, some of those who strongly identify with their ethnicity may not be members of activist groups. The same logic applies to the latter question. Relatively strong ethnic identification, too, seems to be a necessary but not sufficient condition for the belief that federal states should be defined based on ethnic homelands. Someone who identifies with their ethnicity may still advocate for federal states based on geographical features. Therefore, it seems likely that the measure overall underestimates the strength of ethnic identification.
 
@@ -47,7 +47,7 @@ To capture the strength of respondents' national identification, I again use the
 
 The second survey question in particular is an imperfect measure of national identification. Engagement with the government is an imprecise measure of ethnic identification. On the one hand, engagement with the official state apparatus does not necessarily imply identification with the Ethiopian nationality - especially if the respondent engaged with the government only to make a complaint. On the other hand, a respondent who identifies strongly with their nationality need not necessarily engage with their government. Further, respondents might also report interactions with local instead of national government officials, who might not be associated with the Ethiopian state. However, intuitively, engaging with the government indicates some form of national identification.
 
-### Hypothesis
+### 4  Hypothesis
 
 I hypothesize that ethnic and national identification are compatible. Hence, when measuring the two independently, there should be no negative relationship between them.
 
@@ -61,7 +61,7 @@ If ethnic and national identification are incompatible, all observations will cl
 
 **Feedback** I would also like to see some of your own argumentation. Given the studies you cite in the intro, why do you think identities can be additive rather than zero-sum? You've identified a really interesting gap in the lit, now add your own voice!
 
-### Research Design
+### 5  Research Design
 
 To estimate the relationship between ethnic identification and national identification, I will use the following regression model.
 
@@ -71,7 +71,7 @@ In a second model, I will control for the z-score of the number of social ties a
 
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * SocialTies_i +  \epsilon_i $$
 
-Social ties could be a confounding variable because students who interact more frequently with others might feel more connected to both their ethnic group and their nationality. Hence, the relationship between ethnic and national identification would be more negative when controlling for the number of social ties.
+Social ties could be a confounding variable because students who interact more frequently with others might feel more connected to both their ethnic group and their nationality. Hence, the relationship between ethnic and national identification might be more negative when controlling for the number of social ties.
 
 Finally, I will introduce an interaction term to examine whether the relationship between ethnic identification and national identification changes across different levels of perceived discrimination.
 
@@ -79,9 +79,13 @@ $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * Discrimination_i + \
 
 $Discrimination$ measures perceived discrimination and can take the values 'never', 'frequently', and 'always'. Again, I use z-scores for the regression. The assumption underlying this model is that discrimination could make it harder for students to identify with both their ethnicity and nationality at the same time. If a student feels like their ethnic group is discriminated against by other ethnic groups, they may perceive the two forms of identification to be mutually exclusive. In that case, they would have to choose between one and the other, and we would see a negative relationship between ethnic identification and national identification at high levels of perceived discrimination. Such patterns have been found, for example, among Latino college students in the US [@fuller2013national].
 
-**Feedback** Is social ties a confounder or a mechanism? To me, this sounds more like a mechanism through which people might develop additive (rather than zero-sum) identities. Think about what that would mean for how you interpret a potential relationship. Really good explication of why you're looking at discrimination. Also, talk about Ethiopia and how we should think about what results from Ethiopia might tell us about other places. Given that Ethiopia was in the middle of a civil war, is this a most or least likely case to test your argument?
+**Feedback** Is social ties a confounder or a mechanism? To me, this sounds more like a mechanism through which people might develop additive (rather than zero-sum) identities. Think about what that would mean for how you interpret a potential relationship.
 
-### Descriptives
+### 6  Research Context
+
+The relationship between ethnic identification and national identification may vary substantially across countries. Still, Ethiopia appears to be a suitable context to test my hypothesis. Although the Ethiopian people share some strong cultural traits, all major groups follow their own customs and traditions [@marcus2024]. Moreover, Ethiopia was in the midst of the civil war when the survey was conducted. The conflict between the Tigray region and the federal government had turned violent in November of 2020 - one and a half years before the first round of the survey. Hence, Ethiopia appears to be a very likely context to find a negative relationship between ethnic and national identification, if such a relationship exists anywhere. If there is no negative relationship between the two in Ethiopia, we can be quite confident that there is no negative relationship in other countries either.
+
+### 7  Descriptives
 
 The graphs below visualize the distributions of the four variables I use for my analysis.
 
@@ -308,7 +312,7 @@ For national identification, the observations are concentrated on specific numbe
 
 The bottom-right graph illustrates that nearly half of the students report frequent discrimination against their ethnic group, with approximately one third stating their group experiences no discrimination at all. Eighteen percent say their group faces constant discrimination.
 
-### Results
+### 8  Results
 
 The graph below depicts ethnic and national identification among the students as well as the line of best fit resulting from bivariate regression without any controls.
 
@@ -361,7 +365,7 @@ In the second model, the coefficient for the control variable $SocialTies$ is po
 
 Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ in the third model is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of whether students think their group is never, frequently, or always discriminated against, the relationship between ethnic and national identification is not negative.
 
-### Discussion and Implications
+### 9  Discussion and Implications
 
 Overall, my findings indicate that there is no tradeoff between ethnic and national identification. A positive implication of this is that dual identification is possible and that there is the potential to achieve national identification even in diverse societies in which people strongly identify with their ethnicity. National identification, in turn, can improve state capacity and public good provision.
 
