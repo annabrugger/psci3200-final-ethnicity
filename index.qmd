@@ -63,23 +63,26 @@ If ethnic and national identification are incompatible, all observations will cl
 
 ### 5  Research Design
 
-To estimate the relationship between ethnic identification and national identification, I will use the following regression model.
-
+To estimate the relationship between ethnic identification and national identification, I will use the following regression model.\
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i +  \epsilon_i $$
 
 In a second model, I will control for the z-score of the number of social ties a student has (see appendix for question wording):
 
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * SocialTies_i +  \epsilon_i $$
 
-Social ties could be a confounding variable because students who interact more frequently with others might feel more connected to both their ethnic group and their nationality. Hence, the relationship between ethnic and national identification might be more negative when controlling for the number of social ties.
+$$ SocialTies_i = \alpha + \beta_1 * EthnicID_i +  \epsilon_i $$
+
+Social ties could be a mediator
+
+variable because students who
+
+![](images/Screenshot 2024-05-08 205738.png)
 
 Finally, I will introduce an interaction term to examine whether the relationship between ethnic identification and national identification changes across different levels of perceived discrimination.
 
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * Discrimination_i + \beta_3 * (EthnicID_i * Discrimination_i) + \epsilon_i $$
 
 $Discrimination$ measures perceived discrimination and can take the values 'never', 'frequently', and 'always'. Again, I use z-scores for the regression. The assumption underlying this model is that discrimination could make it harder for students to identify with both their ethnicity and nationality at the same time. If a student feels like their ethnic group is discriminated against by other ethnic groups, they may perceive the two forms of identification to be mutually exclusive. In that case, they would have to choose between one and the other, and we would see a negative relationship between ethnic identification and national identification at high levels of perceived discrimination. Such patterns have been found, for example, among Latino college students in the US [@fuller2013national].
-
-**Feedback** Is social ties a confounder or a mechanism? To me, this sounds more like a mechanism through which people might develop additive (rather than zero-sum) identities. Think about what that would mean for how you interpret a potential relationship.
 
 ### 6  Research Context
 
@@ -187,21 +190,21 @@ dat <- dplyr::rename(dat,
 
 
 
-## controls, potential predictors of dual id --------------------------------------
+## other variables ----------------------------------------------------------------
 
 ## question wording
 
-## q5_baseline: Thinking about where you grew up, would you say your upbringing was mostly Urban or Rural?
-
-## q9_baseline: Thinking about your family heritage, what is the ethnic community, cultural group, or tribe that your family belongs to? If your family comes from multiple groups, you may select more than one.
-
-## q_31_baseline: We are now interested in learning about social life at AAU. Thinking about the average week, how many friends or family members do you talk with on the phone, online, or in person?
+## q20_baseline: Q20 Which of the following statements is closest to your view? Statement A: Communities are stronger when they are made up of people from different ethnic groups, races, or religions. Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
 
 ## q74_1: Please tell me how often the following happens: - My ethnic group is discriminated against by members of other groups. 
 
 ## recode values 
 
-dat$q31_baseline[dat$q31_baseline > 1000] <- NA
+dat$q20_baseline[dat$q20_baseline == 'I agree strongly with A'] <- 0
+dat$q20_baseline[dat$q20_baseline == 'I agree with A'] <- 1
+dat$q20_baseline[dat$q20_baseline == 'I agree with neither'] <- 2
+dat$q20_baseline[dat$q20_baseline == 'I agree with B'] <- 3
+dat$q20_baseline[dat$q20_baseline == 'I agree strongly with B'] <- 4
 
 dat$q74_1[dat$q74_1 == 'Never'] <- 0
 dat$q74_1[dat$q74_1 == 'Frequently'] <- 1
@@ -210,15 +213,16 @@ dat$q74_1[dat$q74_1 == 'Always'] <- 2
 ## rename
 
 names(dat)[names(dat) == 'q74_1'] <- 'discrimination'
-names(dat)[names(dat) == 'q31_baseline'] <- 'social_ties'
+names(dat)[names(dat) == 'q20_baseline'] <- 'multiculturalism'
 
-## convert discrimination variable
+## convert variables to numeric
 
 dat$discrimination <- as.numeric(dat$discrimination)
+dat$multiculturalism <- as.numeric(dat$multiculturalism)
 
 ## subset data
 
-dat <- dat[, c('response_id', 'ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'discrimination', 'social_ties')]
+dat <- dat[, c('response_id', 'ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'discrimination',  'multiculturalism')]
 
 
 
@@ -238,7 +242,7 @@ z_score = function(x){
 
 ## create vector with colunm names to be transformed to z-scores
 
-columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'social_ties', 'discrimination')
+columns <- c('ethnic_group_baseline', 'federal_states_baseline', 'contact_govt_baseline', 'ethiopian_people_baseline', 'discrimination', 'multiculturalism')
 
 # calculate and store z-scores
 
@@ -288,12 +292,17 @@ plot(density(dat_z$nationalID, na.rm = T),
 
 par(mfrow=c(1,3))
 
-## Social Ties
+## Create Dataframe with Relative Frequencies of Multiculturalism
 
-plot(density(dat$social_ties[dat$social_ties <= 55], na.rm = T),
-     main = 'Number of Social Ties',
-     xlab = ' ',
-     xlim = c(0,55))
+multiculturalism_graph <- data.frame(prop.table(table(dat$multiculturalism)))
+
+## Plot Multiculturalism
+
+barplot(100 * multiculturalism_graph$Freq, 
+        names.arg = c('0', '1', '2', '3', '4'), 
+        main = 'Multiculturalism',
+        ylim = c(0, 50),
+        ylab = 'Percent')
 
 ## Create Dataframe with Relative Frequencies of Levels of Perceived Discrimination
 
@@ -349,7 +358,7 @@ We can see observations in all four quadrants, and the regression line has a sli
 
 models <- list()
 models[['Bivariate']] <- lm(nationalID ~ ethnicID, data = dat_z)
-models[['Bivariate w/ Control']] <- lm(nationalID ~ ethnicID + social_ties, data = dat_z)
+models[['Bivariate w/ Control']] <- lm(nationalID ~ ethnicID + multiculturalism, data = dat_z)
 models[['Interaction']] <- lm(nationalID ~ ethnicID * discrimination, data = dat_z)
 
 ## print table 
@@ -402,9 +411,13 @@ Ethiopians are very diverse. They come from different religions, ethnic groups, 
 
 Here is a list of actions that people sometimes take as citizens. For each of these, please tell me whether you have taken any of these actions during the past twelve months. - Contacted a government official to ask for help or make a complaint (Question 13_5).
 
-**Social Ties (Co-Variate)**
+**Multiculturalism (Mediator)**
 
-We are now interested in learning about social life at AAU. Thinking about the average week, how many friends or family members do you talk with on the phone, online, or in person (Question 31)?
+Which of the following statements is closest to your view (Question 20)?
+
+-   Statement A: Communities are stronger when they are made up of people from different ethnic groups, races, or religions.
+
+-   Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
 
 **Perceived Discrimination (Interaction)**
 
