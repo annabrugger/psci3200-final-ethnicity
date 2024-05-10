@@ -25,27 +25,29 @@ text-align: justify}
 ```
 ### 1  Introduction
 
-Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false because there is no negative correlation between the two forms of identification. This holds true across different levels of perceived discrimination and when controlling for the number of social ties a student has.
+Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false. Across different levels of perceived discrimination, there is no negative correlation between the two forms of identification. Moreover, I find that multiculturalism does not currently function as a mechanism to foster dual identification among the students.
 
 ### 2  Literature Review
 
-Much of post-colonial literature reflects an assimilationist model of national identity. In the first decades after decolonization, leaders of many African states focused on promoting a unified national identity to strengthen the newly-formed nation-states. This commonly involved assimilating various ethnic groups, as ethnic diversity was perceived as a source of conflict. For instance, in Botswana, assimilationist policies aimed to construct a national identity based Tswana culture. Similarily, in Tanzania, the Tanganyika African National Union (TANU) under Julius Nyerere attempted to build a national identity around Swahili culture and language. Consequently, members of minority groups often faced a tradeoff, sacrificing aspects of their ethnic identity for benefits associated with national identification, such as better career opportunities [@mulimbi2019experiences; @campbell1999nationalism]. Only recently has there been a theoretical shift from the assimilationist model to a multicultural one, recognizing the potential for national identification to coexist alongside ethnic identification. Within the multicultural framework, cultural diversity is seen as integral to national identity, and ethnick diversity is acknowledged as facilitating the coexistence and cooperation of different groups[@priwati2021multiculturalism].
+Much of post-colonial literature reflects an assimilationist model of national identity. In the first decades after decolonization, leaders of many African states focused on promoting a unified national identity to strengthen newly-formed nation-states. This commonly involved assimilating various ethnic groups, as ethnic diversity was perceived as a source of conflict. For instance, in Botswana, assimilationist policies aimed to construct a national identity based on Tswana culture. Similarly, in Tanzania, the Tanganyika African National Union (TANU) under Julius Nyerere attempted to build a national identity around Swahili culture and language. Consequently, members of minority groups often faced a tradeoff, having to sacrifice aspects of their ethnic identity to gain benefits associated with national identification, such as better career opportunities [@mulimbi2019experiences; @campbell1999nationalism].
 
-Much of the research on the multicultural model has been conducted in migrant communities, consistently finding that ethnic and national identification are compatible. For instance, @ryder2000 report that ethnic identification and national identification are independent and have distinctive correlations with external variables during the process of acculturation among immigrants in the US. In particular, some immigrants appear to incorporate their heritage and mainstream cultural identities. A more recent study surveying adolescent immigrants from 13 countries confirms these findings, showing a varied relationship between ethnic and national identification across countries and individuals, ranging from negative to positive [@berry2006].
+Only recently has there been a theoretical shift from the assimilationist model to a multicultural one, recognizing the potential for national identification to coexist alongside ethnic identification. Within the multicultural framework, cultural diversity is seen as integral to national identity, and ethnic diversity is acknowledged as facilitating the coexistence and cooperation of different groups [@priwati2021multiculturalism].
 
-Currently, there seems to be limited evidence on the social identities of non-migrant communities in multi-ethnic countries. However, @davis1999 reports two distinct forms of identification among the Basque people: One entails attachment to a Basque nation, the other is 'apolitical' in that it dissociates the nationalist movement from the perception of being Basque. This suggests the possibility of dual identification among individuals holding an apolitical form of ethnic identity. Further, evidence from secondary schools in Botswana suggests that both majority and minority ethnic students perceive their ethnic and national identities as compatible [@mulimbi2019experiences].
+Much of the research on the multicultural model has been conducted in migrant communities, consistently finding that ethnic and national identification are compatible. For instance, @ryder2000 report that ethnic and national identification are independent and have distinctive correlations with external variables during the acculturation process among immigrants in the US. In particular, some immigrants appear to incorporate their heritage and mainstream cultural identities. A more recent study surveying adolescent immigrants from 13 countries confirms these findings, showing a varied relationship between ethnic and national identification across countries and individuals, ranging from negative to positive [@berry2006].
+
+Currently, there seems to be limited evidence on the social identities of non-migrant communities in multi-ethnic countries. However, @davis1999 reports two distinct forms of identification among the Basque people. One entails attachment to the Basque nation, while the other is 'apolitical' in that it dissociates the nationalist movement from the perception of being Basque. This suggests the possibility of dual identification among individuals holding an apolitical form of ethnic identity. Further, evidence from secondary schools in Botswana suggests that both majority and minority ethnic students perceive their ethnic and national identities as compatible [@mulimbi2019experiences].
 
 ### 3  Data
 
-In order to evaluate the assumption that ethnic and national identification are incompatible, I use data from a representative survey of 825 students at Addis Ababa University (AAU). The survey comprises two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania [@mengsteab2023].
+To evaluate the assumption that ethnic and national identification are incompatible, I use data from a representative survey of 825 students at Addis Ababa University (AAU). The survey comprises two waves, conducted in May-June and October-November of 2022. The data was collected by DevLab researchers from the University of Pennsylvania [@mengsteab2023].
 
-To capture the strength of respondents' ethnic identification, I use the averaged z-score of measures resulting from two survey questions. The first question asks if the respondent participates in any group that promotes the interests of their ethnicity or culture. The answers are coded on a scale from zero to three, with 0 indicating that the respondent is not a member of such a group and 3 indicating that the respondent is the leader of such a group. The second question asks if the respondent believes that the federal states in Ethiopia should be defined based on ethnic homelands or based on geographic features. The answers are coded on a a scale from zero to three, with 0 indicating a strong preference for division based on geographical features and 3 indicating a strong preference for division based on ethnic homelands.
+To capture the strength of respondents' ethnic identification, I use the averaged z-score of measures resulting from two survey questions. The first question asks if the respondent participates in any group that advocates for the interests of their ethnicity or culture. The second asks if the respondent believes that the federal states in Ethiopia should be defined based on ethnic homelands or based on geographic features (see the appendix for exact question wordings).
 
 Both survey questions imperfectly approximate, rather than perfectly measure, ethnic identification. Relatively strong ethnic identification seems to be a necessary but not sufficient condition for activism in the groups' interest. While activism likely implies strong ethnic identification, some of those who strongly identify with their ethnicity may not be members of activist groups. The same logic applies to the latter question. Relatively strong ethnic identification, too, seems to be a necessary but not sufficient condition for the belief that federal states should be defined based on ethnic homelands. Someone who identifies with their ethnicity may still advocate for federal states based on geographical features. Therefore, it seems likely that the measure overall underestimates the strength of ethnic identification.
 
-To capture the strength of respondents' national identification, I again use the averaged z-score of measures resulting from two different survey questions. The first question asks if respondents think there is more that unites all Ethiopians as a people or if there is more that divides them. Again, the answers are coded on a scale from zero to three, with 0 indicating a strong belief that there is more that divides Ethiopians and 3 indicating a strong belief that there is more that unites them as a group. The second question asks if the respondent has contacted a government official within the past twelve months to ask for help or to make a complaint (see the appendix for exact question wordings). The answers are coded on a scale from zero to three, with 0 indicating that the respondent did not contact any government official in the given time period and 3 indicating that they did so more than ten times.
+To capture the strength of respondents' national identification, I again use the averaged z-score of measures resulting from two different survey questions. One question asks if respondents think there is more that unites all Ethiopians as a people or if there is more that divides them. The other one asks if the respondent has contacted a government official within the past twelve months to ask for help or to make a complaint.
 
-The second survey question in particular is an imperfect measure of national identification. Engagement with the government is an imprecise measure of ethnic identification. On the one hand, engagement with the official state apparatus does not necessarily imply identification with the Ethiopian nationality - especially if the respondent engaged with the government only to make a complaint. On the other hand, a respondent who identifies strongly with their nationality need not necessarily engage with their government. Further, respondents might also report interactions with local instead of national government officials, who might not be associated with the Ethiopian state. However, intuitively, engaging with the government indicates some form of national identification.
+The latter question, in particular, is an imperfect measure of national identification. Engagement with the government is an imprecise measure of ethnic identification. On the one hand, engagement with the official state apparatus does not necessarily imply identification with the Ethiopian nationality - especially if the respondent engaged with the government only to make a complaint. On the other hand, a respondent who identifies strongly with their nationality need not necessarily engage with their government. Further, respondents might also report interactions with local instead of national government officials, who might not be associated with the Ethiopian state. However, intuitively, engaging with the government indicates some form of national identification.
 
 ### 4  Hypothesis
 
@@ -59,30 +61,24 @@ The survey question mentioned in the introduction reflects a unidimensional conc
 
 If ethnic and national identification are incompatible, all observations will cluster on the dashed diagonal in Figure 2. However, if the hypothesis is correct, we will see significant spread around the diagonal and also find observations in the first and third quadrants.
 
-**Feedback** I would also like to see some of your own argumentation. Given the studies you cite in the intro, why do you think identities can be additive rather than zero-sum? You've identified a really interesting gap in the lit, now add your own voice!
-
 ### 5  Research Design
 
 To estimate the relationship between ethnic identification and national identification, I will use the following regression model.\
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i +  \epsilon_i $$
 
-In a second model, I will control for the z-score of the number of social ties a student has (see appendix for question wording):
-
-$$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * SocialTies_i +  \epsilon_i $$
-
-$$ SocialTies_i = \alpha + \beta_1 * EthnicID_i +  \epsilon_i $$
-
-Social ties could be a mediator
-
-variable because students who
-
-![](images/Screenshot 2024-05-08 205738.png)
-
-Finally, I will introduce an interaction term to examine whether the relationship between ethnic identification and national identification changes across different levels of perceived discrimination.
+In a second model, I will introduce an interaction term to examine whether the relationship between ethnic identification and national identification changes across different levels of perceived discrimination. I use z-scores for the regression.
 
 $$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * Discrimination_i + \beta_3 * (EthnicID_i * Discrimination_i) + \epsilon_i $$
 
-$Discrimination$ measures perceived discrimination and can take the values 'never', 'frequently', and 'always'. Again, I use z-scores for the regression. The assumption underlying this model is that discrimination could make it harder for students to identify with both their ethnicity and nationality at the same time. If a student feels like their ethnic group is discriminated against by other ethnic groups, they may perceive the two forms of identification to be mutually exclusive. In that case, they would have to choose between one and the other, and we would see a negative relationship between ethnic identification and national identification at high levels of perceived discrimination. Such patterns have been found, for example, among Latino college students in the US [@fuller2013national].
+The assumption underlying this model is that discrimination could make it harder for students to identify with both their ethnicity and nationality at the same time. If a student feels like their ethnic group is discriminated against by other ethnic groups, they may perceive the two forms of identification to be mutually exclusive. In that case, they would have to choose between one and the other, and we would see a negative relationship between ethnic identification and national identification at high levels of perceived discrimination. Such patterns have been found, for example, among Latino college students in the US [@fuller2013national].
+
+Finally, I will test if students at AAU develop dual identification through the mechanism of multiculturalism.
+
+$$ NationalID_i = \alpha + \beta_1 * EthnicID_i + \beta_2 * Multiculturalism_i +  \epsilon_i $$
+
+$Multiculturalism$ reflects the degree to which students believe that diverse communities are stronger than homogeneous communities are (see appendix for question wording). Again, I use z-scores for the regression. @priwati2021multiculturalism find that in Indonesia, multiculturalism partially mediates the relationship between ethnic and national identification. This indicates that multiculturalism can be a mechanism fostering dual identification in societies where diversity is an important aspect of national identity. Indonesia's national motto, for example, is 'unity in diversity'. The dashed lines in Figure 3 below illustrate that relationship. If multiculturalism is a mediator in Ethiopia, too, multiculturalism would be positively correlated with national identification when holding ethnic identification constant. Moreover, the relationship between the two forms of identification, represented by the solid line in Figure 3, would be less positive when controlling for multiculturalism than it is in the simple linear regression model.
+
+![](images/Screenshot 2024-05-10 072211.png)
 
 ### 6  Research Context
 
@@ -284,25 +280,9 @@ plot(density(dat_z$nationalID, na.rm = T),
      xlab = ' ',
      ylab = 'Density')
 
-## Get Proprotions for Write-Up
-
-# prop.table(table(dat$contact_govt_baseline))
-
 ## Set Graphic Parameters
 
 par(mfrow=c(1,3))
-
-## Create Dataframe with Relative Frequencies of Multiculturalism
-
-multiculturalism_graph <- data.frame(prop.table(table(dat$multiculturalism)))
-
-## Plot Multiculturalism
-
-barplot(100 * multiculturalism_graph$Freq, 
-        names.arg = c('0', '1', '2', '3', '4'), 
-        main = 'Multiculturalism',
-        ylim = c(0, 50),
-        ylab = 'Percent')
 
 ## Create Dataframe with Relative Frequencies of Levels of Perceived Discrimination
 
@@ -315,13 +295,25 @@ barplot(100 * discrimination_graph$Freq,
         main = 'Perceived Discrimination',
         ylim = c(0, 50),
         ylab = 'Percent')
+
+## Create Dataframe with Relative Frequencies of Multiculturalism
+
+multiculturalism_graph <- data.frame(prop.table(table(dat$multiculturalism)))
+
+## Plot Multiculturalism
+
+barplot(100 * multiculturalism_graph$Freq, 
+        names.arg = c('0', '1', '2', '3', '4'), 
+        main = 'Multiculturalism',
+        ylim = c(0, 50),
+        ylab = 'Percent')
 ```
 
-The distributions of ethnic and national identification, as well as the number of social ties, are negatively skewed. This implies that there are few students with relatively strong national identification, few with relatively strong ethnic identification, and few with a large number of social ties.
+The distributions of ethnic and national identification are both negatively skewed. This implies that there are few students with relatively strong national identification and few with relatively strong ethnic identification. For national identification, the observations are concentrated on specific numbers because 83% of all respondents (excluding those with no response) say that they have not contacted any government official within the past twelve months. Hence, respondents' beliefs about the unity of the Ethiopian people are the key driver of the distribution. For instance, the peak at .3 represents respondents who have not interacted with the government but strongly believe in the unity of the Ethiopian people.
 
-For national identification, the observations are concentrated on specific numbers because 83% of all respondents (excluding those with no response) say that they have not contacted any government official within the past twelve months. Hence, respondents' beliefs about the unity of the Ethiopian people are the key driver of the distribution. For instance, the peak at .3 represents respondents who have not interacted with the government but strongly believe in the unity of the Ethiopian people.
+The bottom-left graph shows that nearly half of the students report frequent discrimination against their ethnic group, with approximately one third stating their group experiences no discrimination at all. Eighteen percent say their group faces constant discrimination.
 
-The bottom-right graph illustrates that nearly half of the students report frequent discrimination against their ethnic group, with approximately one third stating their group experiences no discrimination at all. Eighteen percent say their group faces constant discrimination.
+The bottom-right graph shows that the belief in multiculturalism is overall weak among the surveyed students. 43% of them strongly believe that homogeneous communities are stronger than diverse ones, and only 4% strongly believe that the opposite is true.
 
 #### **7.2  Regression Analysis**
 
@@ -358,8 +350,8 @@ We can see observations in all four quadrants, and the regression line has a sli
 
 models <- list()
 models[['Bivariate']] <- lm(nationalID ~ ethnicID, data = dat_z)
-models[['Bivariate w/ Control']] <- lm(nationalID ~ ethnicID + multiculturalism, data = dat_z)
 models[['Interaction']] <- lm(nationalID ~ ethnicID * discrimination, data = dat_z)
+models[['Bivariate w/ Control']] <- lm(nationalID ~ ethnicID + multiculturalism, data = dat_z)
 
 ## print table 
 
@@ -370,19 +362,21 @@ modelsummary(
   gof_omit = 'IC|RMSE|Log|F|R2$|Std.')
 ```
 
-In none of the three models is there a significant negative correlation between national and ethnic identification. In contrast, the coefficients for $EthnicID$ are all positive, even though not significant (0.048, 0.049, and 0.048). Hence, no matter if we control for the number of social ties or the perceived level discrimination, there is no negative correlation between ethnic and national identification.
+In none of the three models is there a significant negative correlation between national and ethnic identification. In contrast, the coefficients for $EthnicID$ are all positive, even though not significant (0.049, 0.049, and 0.053).
 
-In the second model, the coefficient for the control variable $SocialTies$ is positive, but small and not significant (0.024). This means that, holding ethnic identification constant, students with more social ties are not significantly more likely to identify as Ethiopian. Having more social ties does increase the probability of dual identification.
+In the second model, the coefficient for the interaction term $EthnicID * Discrimination$ is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of whether students think their group is never, frequently, or always discriminated against, the relationship between ethnic and national identification is not negative.
 
-Lastly, the coefficient for the interaction term $EthnicID * Discrimination$ in the third model is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of whether students think their group is never, frequently, or always discriminated against, the relationship between ethnic and national identification is not negative.
+Lastly, the coefficient for $EthnicID$ is more positive when controlling for multiculturalism in the last model than it is in the simple linear regression model (0.53 compared to 0.49). However, the difference between the two is not statistically significant. Hence, multiculturalism does not function as a mechanism to foster dual identification among students at AAU. Moreover, the coefficient for $Multiculturalism$ is negative and statistically significant (-0.104). This means that holding ethnic identification constant, an increase by one standard deviation in multiculturalism on average leads to a decrease of .1 standard deviations in national identification.
 
 ### 8  Discussion and Implications
 
-Overall, my findings indicate that there is no tradeoff between ethnic and national identification. A positive implication of this is that dual identification is possible and that there is the potential to achieve national identification even in diverse societies in which people strongly identify with their ethnicity. National identification, in turn, can improve state capacity and public good provision.
+Overall, my findings indicate that there is no tradeoff between ethnic and national identification - even when students think that their ethnic group is discriminated against. Positive implications of this are that dual identification is possible and that there is the potential to achieve national identification even in diverse societies in which people strongly identify with their ethnicity. National identification, in turn, can improve state capacity and public good provision.
 
-Yet, one key limitation of my analysis is that the sample, taken from college students at AAU, is not representative of the Ethiopian population as a whole. College students' social identities may well be different from those of the wider population. For instance, the campus of AAU might be a more ethnically diverse social environment than that the average citizen is used to. Diversity, in turn, may decrease ethnic identification. Furthermore, college students are likely to better educated about and more involved in national politics, and making them more likely to identify as Ethiopian. Hence, further research is necessary to test the external validity of my findings.
+Yet, one key limitation of my analysis is that the sample, taken from college students at AAU, is not representative of the Ethiopian population as a whole. While Ethiopia is an unlikely case to find evidence in favor of my hypothesis, the student body of AAU is a likely test case within the nation. College students' social identities likely differ from those of the wider population. For instance, college students are likely better educated about and more involved in national politics, making them more likely to identify as Ethiopian. Hence, further research is necessary to test the external validity of my findings.
 
-In terms of methodology, my findings suggest that unidimensional models fail to adequately measure social identities. In particular, such models cannot account for people who identify with both their ethnicity and their nationality. Even if unidimensional models may be accurate in some contexts, we still need the bidimensional model to demonstrate the accuracy of unidimensional ones by showing that there is indeed a negative correlation between two forms of identification (@ryder2000). Thus, if my hypotesis is valid for broader populations, we will need to reconsider the wording of survey questions designed to capture social identities.
+At the moment, multiculturalism prevents rather than fosters national identification among the students. The war between the federal government and the Tigray reinforces a culture of animosity between ethnicities rather than embracing one that promotes diversity. In the future, establishing multiculturalism as part of the national identity may be an effective strategy to foster dual identification.
+
+In terms of methodology, my findings suggest that unidimensional models fail to adequately measure social identities. In particular, such models cannot account for people who identify with both their ethnicity and their nationality. Even if unidimensional models may be accurate in some contexts, we still need the bidimensional model to demonstrate the accuracy of unidimensional ones by showing that there is indeed a negative correlation between two forms of identification (@ryder2000). Thus, if my hypothesis is valid for broader populations, we will need to reconsider the wording of survey questions designed to capture social identities and give respondents the opportunity to separately rank the strength of their ethnic and national identification.
 
 ### References
 
@@ -411,14 +405,14 @@ Ethiopians are very diverse. They come from different religions, ethnic groups, 
 
 Here is a list of actions that people sometimes take as citizens. For each of these, please tell me whether you have taken any of these actions during the past twelve months. - Contacted a government official to ask for help or make a complaint (Question 13_5).
 
-**Multiculturalism (Mediator)**
+**Perceived Discrimination (Interaction)**
+
+Please tell me how often the following happens: - My ethnic group is discriminated against by members of other groups (Question 74_1).
+
+**Multiculturalism (Mechanism)**
 
 Which of the following statements is closest to your view (Question 20)?
 
 -   Statement A: Communities are stronger when they are made up of people from different ethnic groups, races, or religions.
 
 -   Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
-
-**Perceived Discrimination (Interaction)**
-
-Please tell me how often the following happens: - My ethnic group is discriminated against by members of other groups (Question 74_1).
