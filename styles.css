@@ -1,1 +1,5 @@
 /* css styles */
+
+.indented-paragraph {
+    text-indent: 60px;
+}
