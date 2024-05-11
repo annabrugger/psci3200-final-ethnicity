@@ -27,7 +27,7 @@ text-align: justify}
 
 <div class='indented-paragraph'>
 
-Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false. Across different levels of perceived discrimination, there is no negative correlation between the two forms of identification. Moreover, I find that multiculturalism does not currently function as a mechanism to foster dual identification among the students.
+Many surveys use the following question to probe for respondents' ethnic and national identities: *Let us suppose that you had to choose between being a (Kenyan/Ghanaian/etc) and being a (respondent's ethnic group). Which of these two groups do you feel most strongly attached to?* [see, for example, @afrobarometer2020]. This question reflects the assumption that national and ethnic identification are incompatible. However, based on the analysis of survey data from Ethiopian university students, I argue that this assumption is false. Across different levels of perceived discrimination, there is no negative correlation between the two forms of identification. Moreover, multiculturalism appears as a strategy that could be used to promote dual identification.
 
 </div>
 
@@ -231,17 +231,19 @@ dat <- dplyr::rename(dat,
 
 ## question wording
 
-## q20_baseline: Q20 Which of the following statements is closest to your view? Statement A: Communities are stronger when they are made up of people from different ethnic groups, races, or religions. Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
+## q20_baseline: Which of the following statements is closest to your view? Statement A: Communities are stronger when they are made up of people from different ethnic groups, races, or religions. Statement B: Communities are stronger when they are made up of people who are similar to each other, that is, people from the same ethnic group, race, or religion.
+
+## 
 
 ## q74_1: Please tell me how often the following happens: - My ethnic group is discriminated against by members of other groups. 
 
 ## recode values 
 
-dat$q20_baseline[dat$q20_baseline == 'I agree strongly with A'] <- 0
-dat$q20_baseline[dat$q20_baseline == 'I agree with A'] <- 1
+dat$q20_baseline[dat$q20_baseline == 'I agree strongly with A'] <- 4
+dat$q20_baseline[dat$q20_baseline == 'I agree with A'] <- 3
 dat$q20_baseline[dat$q20_baseline == 'I agree with neither'] <- 2
-dat$q20_baseline[dat$q20_baseline == 'I agree with B'] <- 3
-dat$q20_baseline[dat$q20_baseline == 'I agree strongly with B'] <- 4
+dat$q20_baseline[dat$q20_baseline == 'I agree with B'] <- 1
+dat$q20_baseline[dat$q20_baseline == 'I agree strongly with B'] <- 0
 
 dat$q74_1[dat$q74_1 == 'Never'] <- 0
 dat$q74_1[dat$q74_1 == 'Frequently'] <- 1
@@ -346,7 +348,7 @@ barplot(100 * multiculturalism_graph$Freq,
         ylab = 'Percent')
 ```
 
-The bottom-left graph shows that nearly half of the students report frequent discrimination against their ethnic group, with approximately one third stating their group experiences no discrimination at all. Eighteen percent say their group faces constant discrimination. The bottom-right graph shows that the belief in multiculturalism is overall weak among the surveyed students. 43% of them strongly believe that homogeneous communities are stronger than diverse ones, and only 4% strongly believe that the opposite is true.
+The bottom-left graph shows that nearly half of the students report frequent discrimination against their ethnic group, with approximately one third stating their group experiences no discrimination at all. Eighteen percent say their group faces constant discrimination. The bottom-right graph shows that the belief in multiculturalism is overall strong among the surveyed students. 43% of them strongly believe that diverse communities are stronger than homogeneous ones, and only 4% strongly believe that the opposite is true.
 
 </div>
 
@@ -403,7 +405,7 @@ In none of the three models is there a significant negative correlation between 
 
 In the second model, the coefficient for the interaction term $EthnicID * Discrimination$ is small and not statistically significant (0.021). This means that the relationship between ethnic identification and national identification does not significantly change across different levels of perceived discrimination. Regardless of whether students think their group is never, frequently, or always discriminated against, the relationship between ethnic and national identification is not negative.
 
-Lastly, the coefficient for $EthnicID$ is more positive when controlling for multiculturalism in the last model than it is in the simple linear regression model (0.53 compared to 0.49). However, the difference between the two is not statistically significant. Hence, multiculturalism does not function as a mechanism to foster dual identification among students at AAU. Moreover, the coefficient for $Multiculturalism$ is negative and statistically significant (-0.104). This means that holding ethnic identification constant, an increase of one standard deviation in multiculturalism on average leads to a decrease of .1 standard deviations in national identification.
+Lastly, the coefficient for $EthnicID$ does not change significantly when controlling for multiculturalism in the last model and is even slightly more positive than in the simple linear regression model (0.53 compared to 0.49). Hence, multiculturalism does not function as a mechanism to foster dual identification among students at AAU. Yet, national identification is positively correlated with multiculturalism. The coefficient for $Multiculturalism$ is small but statistically significant (0.104). This means that holding ethnic identification constant, an increase of one standard deviation in multiculturalism on average is associated with an increase of .1 standard deviations in national identification.
 
 </div>
 
@@ -413,9 +415,9 @@ Lastly, the coefficient for $EthnicID$ is more positive when controlling for mul
 
 Overall, my findings indicate that there is no tradeoff between ethnic and national identification - even when students think that their ethnic group is discriminated against. A positive implication of this is that dual identification is possible and there is potential to achieve national identification even in diverse societies in which people strongly identify with their ethnicity. National identification, in turn, can improve state capacity and public good provision.
 
-Yet, one key limitation of my analysis is that the sample, taken from college students at AAU, is not representative of the Ethiopian population as a whole. While Ethiopia is an unlikely case to find evidence in favor of my hypothesis, the student body of AAU is a likely test case within the nation. College students' social identities differ from those of the wider population. For instance, college students may be better educated about and more involved in national politics, making them more likely to identify as Ethiopian. Hence, further research is necessary to test the external validity of my findings.
+Given that national identification is positively correlated with multiculturalism, multiculturalism could serve as a strategy to foster dual identification in Ethiopia. National identification could be strengthened not just by promoting multiculturalism but also by consciously integrating it into the national identity. Admittedly, the conflict over Tigray makes it currently difficult to associate multiculturalism with Ethiopian identity. However, doing so could lead people who embrace multiculturalism to identify more strongly with their nationality, both due to their belief in the strength of diverse communities and due to ideological alignment with the national identity.
 
-At AAU, students' belief in multiculturalism is negatively correlated with, i.e., it prevents rather than fosters national identification. This negative relationship makes sense in the context of the government's conflict with the Tigray in the North of the country which makes it difficult to associate Ethiopian national identity with multiculturalism. In the future, however, the integration of multiculturalism into the national identity may prove to be an effective strategy to foster dual identification.
+Yet, one key limitation of my analysis is that the sample, taken from college students at AAU, is not representative of the Ethiopian population as a whole. While Ethiopia is an unlikely case to find evidence in favor of my hypothesis, the student body of AAU is a likely test case within the nation. College students' social identities differ from those of the wider population. For instance, college students may be better educated about and more involved in national politics, making them more likely to identify as Ethiopian. Hence, further research is necessary to test the external validity of my findings.
 
 In terms of methodology, my findings suggest that the unidimensional model fails to adequately measure social identities. In particular, such a model cannot account for people who identify with both their ethnicity and their nationality. Even if the unidimensional model may be accurate in some contexts, we still need the bidimensional model to demonstrate the accuracy of the unidimensional one by showing that there is indeed a negative correlation between two forms of identification (@ryder2000). Thus, if my hypothesis is valid for broader populations, we will need to reconsider the wording of survey questions designed to capture social identities and give respondents the opportunity to separately rank the strength of their ethnic and national identification.
 
